@@ -1,0 +1,17 @@
+<div class="container" style="margin: 2em;">
+  <div class="jumbotron">
+    <form class="form-group" [formGroup]="loginForm">
+      <div class="md-form form-sm">
+        <input mdbInput type="text" id="form1" class="form-control form-control-sm" formControlName="username">
+        <label for="form1" class="">Username</label>
+      </div>
+      <div class="md-form form-sm">
+        <input mdbInput type="password" id="form2" class="form-control form-control-sm" formControlName="password">
+        <label for="form1" class="">Password</label>
+      </div>
+      <div>
+        <button [disabled]="!loginForm.valid" (click)="submit()" mdbBtn type="button" color="info" mdbWavesEffect>Login</button>
+      </div>
+    </form>
+  </div>
+</div>
