@@ -14,6 +14,7 @@ export class LoginService {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigate(['/dashboard']);
       } else {
         localStorage.setItem('user', null);
       }

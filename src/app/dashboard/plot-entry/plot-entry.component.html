@@ -1,0 +1,129 @@
+<div class="jumbotron" style="margin: 2em;">
+  <div class="container">
+    <form [formGroup]="plotEntryForm">
+      <h2 style="text-align: center;">Add Plot</h2>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="text" id="plotNumber" class="form-control" formControlName="plotNumber">
+            <label for="plotNumber" class="">Plot Number</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="text" id="membershipNumber" class="form-control" formControlName="membershipNumber">
+            <label for="membershipNumber" class="">Membership Number</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="text" id="sharesNumber" class="form-control" formControlName="sharesNumber">
+            <label for="sharesNumber" class="">Shares Number</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="text" id="numberOfShares" class="form-control" formControlName="numberOfShares">
+            <label for="numberOfShares" class="">Number of Shares</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div formGroupName="originalAllottee">
+        <h4 style="text-align: center;">Original Allottee</h4>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeName" class="form-control" formControlName="allotteeName">
+              <label for="allotteeName" class="">Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeRelations" class="form-control" formControlName="allotteeRelations">
+              <label for="allotteeRelations" class="">S/O D/O W/O</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeAddress" class="form-control" formControlName="allotteeAddress">
+              <label for="allotteeAddress" class="">Address</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeOrganization" class="form-control" formControlName="allotteeOrganization">
+              <label for="allotteeOrganization" class="">Organization</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeHowAcquired" class="form-control" formControlName="allotteeHowAcquired">
+              <label for="allotteeHowAcquired" class="">How Acquired</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeSizeOfPlot" class="form-control" formControlName="allotteeSizeOfPlot">
+              <label for="allotteeSizeOfPlot" class="">Size of Plot</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="allotteeCnic" class="form-control" formControlName="allotteeCnic">
+              <label for="allotteeCnic" class="">CNIC</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formArrayName="transfers">
+        <div *ngFor="let item of plotEntryForm.get('transfers')['controls']; let i=index" [formGroupName]="i">
+          <h4 style="text-align: center;">Transfer {{i+1}}</h4>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="transfersName" class="form-control form-control-sm" formControlName="transfersName">
+                <label for="transfersName" class="">Transfered to (Name)</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="transfersOnAccount" class="form-control form-control-sm" formControlName="transfersOnAccount">
+                <label for="transfersOnAccount" class="">Transfered on account of</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="transfersRelation" class="form-control form-control-sm" formControlName="transfersRelation">
+                <label for="transfersRelation" class="">S/O D/O W/O</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!--Date picker-->
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="transfersDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <button (click)="removeTransfer(i)" class="btn btn-xs" type="button">X</button>
+          </div>
+        </div>
+      </div>
+      <button (click)="addTransfer()" type="button" mdbBtn color="success" mdbWavesEffect>Add Transfer</button>
+      <button (click)="submit()" type="button" mdbBtn color="info" mdbWavesEffect>Submit</button>
+    </form>
+  </div>
+</div>
