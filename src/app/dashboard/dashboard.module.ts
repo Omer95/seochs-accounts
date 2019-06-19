@@ -7,6 +7,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PlotEntryComponent } from './plot-entry/plot-entry.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MDBBootstrapModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireDatabaseModule
   ],
   exports: [
     RouterModule
