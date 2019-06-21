@@ -112,5 +112,6 @@ export class PlotEntryComponent implements OnInit {
       transfers: transfersList
     }
     console.log(newPlot);
+    this.db.list('/plots').push(newPlot);
   }
 }
