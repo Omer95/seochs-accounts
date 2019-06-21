@@ -1,4 +1,5 @@
 import { Transfer } from './transfer.model';
+import { PlotHolder } from './plot-holder.model';
 
 export class Plot {
     plotNumber: string;
@@ -12,15 +13,7 @@ export class Plot {
     originalAllotteeHowAcquired: string;
     originalAllotteeSizeOfPlot: string;
     originalAllotteeCnic: string;
-    presentPlotHolder: string;
-    presentRelation: string;
-    presentAddress: string;
-    presentContactNumber: string;
-    presentOrganization: string;
-    presentHowAcquired: string;
-    presentCnic: string;
-    presentPossession: string;
-    presentDemarcation: string;
+    presentPlotHolders: PlotHolder[];
     remarks: string;
     transfers: Transfer[];
 }

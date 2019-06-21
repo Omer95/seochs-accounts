@@ -124,73 +124,80 @@
         </div>
       </div>
       <button (click)="addTransfer()" type="button" mdbBtn color="success" mdbWavesEffect>Add Transfer</button>
-      <div formGroupName="presentStatus">
-        <h4 style="text-align: center;">Present Status</h4>
-        <div class="form-row">
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentPlotHolder" class="form-control form-control-sm" formControlName="presentPlotHolder">
-              <label for="presentPlotHolder" class="">Plot Holder Name</label>
+      <div formArrayName="presentPlotHolders">
+        <h4 style="text-align: center;">Present Plot Holders</h4>
+        <div *ngFor="let plotholder of plotEntryForm.get('presentPlotHolders')['controls']; let i=index" [formGroupName]="i">
+          <h4>Plot Holder #{{i+1}}</h4>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentPlotHolder" class="form-control form-control-sm" formControlName="presentPlotHolder">
+                <label for="presentPlotHolder" class="">Plot Holder Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentRelations" class="form-control form-control-sm" formControlName="presentRelations">
+                <label for="presentRelations" class="">S/O D/O W/O</label>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentRelations" class="form-control form-control-sm" formControlName="presentRelations">
-              <label for="presentRelations" class="">S/O D/O W/O</label>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentAddress" class="form-control form-control-sm" formControlName="presentAddress">
+                <label for="presentAddress" class="">Address</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentContactNumber" class="form-control form-control-sm" formControlName="presentContactNumber">
+                <label for="presentContactNumber" class="">Contact Number</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentAddress" class="form-control form-control-sm" formControlName="presentAddress">
-              <label for="presentAddress" class="">Address</label>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentOrganization" class="form-control form-control-sm" formControlName="presentOrganization">
+                <label for="presentOrganization" class="">Occupation/Organization</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentHowAcquired" class="form-control form-control-sm" formControlName="presentHowAcquired">
+                <label for="presentHowAcquired" class="">How Acquired</label>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentContactNumber" class="form-control form-control-sm" formControlName="presentContactNumber">
-              <label for="presentContactNumber" class="">Contact Number</label>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentCnic" class="form-control form-control-sm" formControlName="presentCnic">
+                <label for="presentCnic" class="">CNIC</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentPossession" class="form-control form-control-sm" formControlName="presentPossession">
+                <label for="presentPossession" class="">Possession</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentOrganization" class="form-control form-control-sm" formControlName="presentOrganization">
-              <label for="presentOrganization" class="">Occupation/Organization</label>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="md-form form-sm">
+                <input mdbInput type="text" id="presentDemarcation" class="form-control form-control-sm" formControlName="presentDemarcation">
+                <label for="presentDemarcation" class="">Demarcation</label>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentHowAcquired" class="form-control form-control-sm" formControlName="presentHowAcquired">
-              <label for="presentHowAcquired" class="">How Acquired</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentCnic" class="form-control form-control-sm" formControlName="presentCnic">
-              <label for="presentCnic" class="">CNIC</label>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentPossession" class="form-control form-control-sm" formControlName="presentPossession">
-              <label for="presentPossession" class="">Possession</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6">
-            <div class="md-form form-sm">
-              <input mdbInput type="text" id="presentDemarcation" class="form-control form-control-sm" formControlName="presentDemarcation">
-              <label for="presentDemarcation" class="">Demarcation</label>
-            </div>
+          <div class="form-row">
+            <button (click)="removePresentPlotHolder(i)" class="btn btn-xs" type="button">X</button>
           </div>
         </div>
       </div>
+      <button (click)="addPresentPlotHolder()" type="button" mdbBtn color="success" mdbWavesEffect>Add Present Plot Holder</button>
       <div class="form-row">
         <div class="col-md-6">
           <div class="md-form form-sm">
