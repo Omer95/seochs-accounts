@@ -13,7 +13,7 @@ admin.initializeApp();
 var globVal = 2000;
 
 exports.scheduledJob = functions.pubsub.schedule('every 1 minutes').onRun((context) => {
-    console.log('Hello');
+    console.log('Hello'); 
     const db = admin.database();
     return db.ref('/plots').once('value').then(snap=> {
         Object.keys(snap.val()).forEach(plot=> {
@@ -21,7 +21,7 @@ exports.scheduledJob = functions.pubsub.schedule('every 1 minutes').onRun((conte
             return db.ref(`/plots/${plot}/debits`).push({
                 description: 'security fees',
                 debitAmount: 2000,
-                date: new Date()
+                date: Date()
             });
         });
     }).catch(error => {
