@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <div class="container">
+    <mat-form-field>
+      <mat-label>Choose Plot Number</mat-label>
+      <mat-select>
+        <mat-option>
+          <ngx-mat-select-search></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let plotNumber of plotNumbers" [value]="plotNumber">
+          {{plotNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
