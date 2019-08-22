@@ -11,6 +11,9 @@ export class DebitEntryComponent implements OnInit {
   debitEntryForm: FormGroup;
   plotNumbers = [];
   membershipNumbers = [];
+  selectedPlotNumber;
+  selectedMembershipNumber;
+  testArr = ['omer', 'ali', 'alam', 'ahmed'];
   constructor(private fb: FormBuilder, private debitService: DebitEntryService) { }
 
   ngOnInit() {
@@ -18,17 +21,26 @@ export class DebitEntryComponent implements OnInit {
     this.debitService.getPlotNumbers().subscribe(val => {
       val.forEach((plot: any) => {
         console.log(plot.plotNumber);
-        this.plotNumbers.push(plot.plotNumber);
+        this.plotNumbers = [...this.plotNumbers, plot.plotNumber];
         console.log(plot.membershipNumber);
-        this.membershipNumbers.push(plot.membershipNumber);
+        this.membershipNumbers = [...this.membershipNumbers, plot.membershipNumber];
       });
     });
   }
   initForm() {
     this.debitEntryForm = this.fb.group({
-      plotNumber: [null, Validators.required],
-      membershipNumber: [null, Validators.required]
+      debitAmount: [null, Validators.required],
+      debitDesc: [null, Validators.required]
     });
+  }
+  submit() {
+    const debit = {
+      description: this.debitEntryForm.get('debitDesc').value,
+      debitAmount: this.debitEntryForm.get('debitAmount').value,
+      date: Date()
+    }
+    this.debitService.addDebit(debit, this.selectedPlotNumber, this.selectedMembershipNumber);
+    this.debitEntryForm.reset();
   }
 
 }

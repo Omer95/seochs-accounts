@@ -11,7 +11,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DebitEntryComponent } from './debit-entry/debit-entry.component';
 import { MatSelectModule } from '@angular/material';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     MatExpansionModule,
     MatSelectModule,
-    NgxMatSelectSearchModule
+    FormsModule,
+    NgSelectModule
   ],
   exports: [
     RouterModule

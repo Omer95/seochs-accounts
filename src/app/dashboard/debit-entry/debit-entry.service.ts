@@ -11,4 +11,12 @@ export class DebitEntryService {
   getPlotNumbers() {
     return this.db.list('/plots').valueChanges();
   }
+  addDebit(debit: any, plotNum: string, memNum: string) {
+    this.db.database.ref(`plots/${plotNum}-${memNum}/debits`).push(debit)
+    .then(_ => {
+      console.log('debit pushed');
+    }).catch(err => {
+      console.log(err);
+    });
+  }
 }
