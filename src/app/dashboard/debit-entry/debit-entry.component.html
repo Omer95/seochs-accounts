@@ -1,0 +1,45 @@
+<div class="jumbotron">
+  <div class="container">
+    <form [formGroup]="debitEntryForm">
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="md-form">
+            <ng-select
+              [items]="plotNumbers"
+              [(ngModel)]="selectedPlotNumber"
+              autofocus
+              [ngModelOptions] = "{standalone:true}"
+            ></ng-select>
+            <p>Selected Plot Number: {{selectedPlotNumber}}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="md-form">
+                <ng-select
+                [items]="membershipNumbers"
+                [(ngModel)]="selectedMembershipNumber"
+                autofocus
+                [ngModelOptions] = "{standalone:true}"
+              ></ng-select>
+              <p>Selected Membership Number: {{selectedMembershipNumber}}</p>
+            </div>
+          </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="number" placeholder="Debit Amount" formControlName="debitAmount">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="md-form">
+            <input mdbInput type="text" placeholder="Description" formControlName="debitDesc">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedMembershipNumber && selectedPlotNumber" class="form-row">
+        <button (click)="submit()" mdbBtn MdbWavesEffect type="button" color="success" [disabled]="!debitEntryForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

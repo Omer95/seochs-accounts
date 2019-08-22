@@ -2,6 +2,8 @@
 
 /functions/node_modules
 
+client_secret.json
+
 # compiled output
 /dist
 /tmp

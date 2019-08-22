@@ -2,5 +2,23 @@
   <div class="jumbotron">
     <button (click)="logout()" type="button" mdbBtn color="warning" mdbWavesEffect>Logout</button>
   </div>
-  <app-plot-entry></app-plot-entry>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h4>Add Plot</h4>
+      </mat-expansion-panel-header>
+      <app-plot-entry></app-plot-entry>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h4>Add Credit</h4>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h4>Add Debit</h4>
+      </mat-expansion-panel-header>
+      <app-debit-entry></app-debit-entry>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

@@ -35,7 +35,7 @@ export class PlotEntryComponent implements OnInit {
       transfers: this.fb.array([]),
       presentPlotHolders: this.fb.array([]),
       remarks: [undefined, Validators.required]
-    })
+    });
   }
   addTransfer(): void {
     if ((this.plotEntryForm.get('transfers') as FormArray).length < 3) {
@@ -70,14 +70,14 @@ export class PlotEntryComponent implements OnInit {
   }
   submit(): void {
     console.log(this.plotEntryForm);
-    const transfersList: Transfer[] = []; 
+    const transfersList: Transfer[] = [];
     for (let i = 0; i < (this.plotEntryForm.get('transfers') as FormArray).length; i++) {
       const transfer: Transfer = {
         transferTo: ((this.plotEntryForm.get('transfers') as FormArray).get(i.toString()) as FormGroup).get('transfersName').value,
         transferRelation: ((this.plotEntryForm.get('transfers') as FormArray).get(i.toString()) as FormGroup).get('transfersRelation').value,
         transferOnAccountOf: ((this.plotEntryForm.get('transfers') as FormArray).get(i.toString()) as FormGroup).get('transfersOnAccount').value,
-        transferDate: ((this.plotEntryForm.get('transfers') as FormArray).get(i.toString()) as FormGroup).get('transfersDate').value, 
-      }
+        transferDate: ((this.plotEntryForm.get('transfers') as FormArray).get(i.toString()) as FormGroup).get('transfersDate').value,
+      };
       transfersList.push(transfer);
     }
     const plotHoldersList: PlotHolder[] = [];
@@ -92,7 +92,7 @@ export class PlotEntryComponent implements OnInit {
         cnic: ((this.plotEntryForm.get('presentPlotHolders') as FormArray).get(i.toString()) as FormGroup).get('presentCnic').value,
         possession: ((this.plotEntryForm.get('presentPlotHolders') as FormArray).get(i.toString()) as FormGroup).get('presentPossession').value,
         demarcation: ((this.plotEntryForm.get('presentPlotHolders') as FormArray).get(i.toString()) as FormGroup).get('presentDemarcation').value
-      }
+      };
       plotHoldersList.push(plotHolder);
     }
     const newPlot: Plot = {
@@ -110,8 +110,11 @@ export class PlotEntryComponent implements OnInit {
       presentPlotHolders: plotHoldersList,
       remarks: this.plotEntryForm.get('remarks').value,
       transfers: transfersList
-    }
+    };
     console.log(newPlot);
-    this.db.list('/plots').push(newPlot);
+    // this.db.list('/plots').push(newPlot);
+    this.db.database.ref('/plots').child(`${newPlot.plotNumber}-${newPlot.membershipNumber}`)
+    .set(newPlot);
+    this.plotEntryForm.reset();
   }
 }
