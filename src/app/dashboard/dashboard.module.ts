@@ -13,6 +13,7 @@ import { DebitEntryComponent } from './debit-entry/debit-entry.component';
 import { MatSelectModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CreditComponent } from './credit/credit.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
     PlotEntryComponent,
-    DebitEntryComponent
+    DebitEntryComponent,
+    CreditComponent
   ],
   imports: [
     CommonModule,
